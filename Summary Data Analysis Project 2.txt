@@ -1,0 +1,27 @@
+Title: Credit Card Rewards Analysis
+
+Introduction:
+
+In this data analysis project, I analyzed credit card transaction data to derive insights into rewards earned by individuals. Leveraging SQL queries and Power BI visualizations, I aimed to showcase my analytical skills and ability to derive meaningful insights from raw data.
+
+Project Overview:
+The project involved analyzing credit card transaction data stored in a SQL Server database. I utilized various SQL queries to perform data aggregation, filtering, and calculations to derive key metrics such as total rewards earned by individuals based on their transaction history and credit card rewards program parameters.
+
+Key Findings:
+
+Through SQL queries, I calculated total rewards earned by individuals, factoring in cashback rewards and promotional bonuses based on transaction amounts and credit card rewards program rules.
+Utilizing Power BI visualizations, I presented these insights in an interactive and intuitive manner, allowing stakeholders to explore and understand the data effectively.
+Challenges:
+
+One of the main challenges faced was optimizing SQL queries for performance, especially when dealing with large datasets. This involved fine-tuning query logic and indexing strategies to improve query execution times.
+Integrating SQL queries with Power BI required a solid understanding of both tools and how they interacted with each other. This involved overcoming compatibility issues and ensuring seamless data flow between SQL Server and Power BI.
+Cool Techniques:
+
+Leveraging CASE statements in SQL queries allowed for dynamic conditional logic, enabling calculations based on various criteria such as transaction amounts, deadlines, and reward program rules.
+Using Power BI's visualization capabilities, I created interactive dashboards that provided a holistic view of the data, allowing stakeholders to drill down into specific metrics and uncover actionable insights.
+Future Considerations:
+
+Given more time, I would have explored additional data sources to enrich the analysis further. For example, integrating demographic data or external economic indicators could provide deeper insights into consumer behavior and spending patterns.
+Implementing advanced analytics techniques such as predictive modeling or machine learning algorithms could unlock predictive insights, enabling proactive decision-making and personalized customer experiences.
+Conclusion:
+This data analysis project provided valuable insights into credit card transaction data, showcasing my ability to extract meaningful insights and present them in a visually compelling manner. By leveraging SQL queries and Power BI visualizations, I demonstrated my proficiency in data analysis and visualization, making this project a valuable addition to my resume portfolio.
