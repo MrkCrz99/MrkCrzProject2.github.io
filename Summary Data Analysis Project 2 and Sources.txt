@@ -70,6 +70,7 @@ Comprehensive Credit Card Transactions Dataset
 
 https://www.kaggle.com/datasets/rajatsurana979/comprehensive-credit-card-transactions-dataset?select=credit_card_transaction_flow.csv
 
-All credit card data was individualy collected from the fallowing site: 
+All credit card data was individualy collected from the fallowing sites:
+
 https://money.usnews.com/credit-cards/rewards
 https://www.forbes.com/advisor/credit-cards/best/rewards/
