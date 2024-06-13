@@ -1,23 +1,27 @@
-SELECT * 
-From Project1..Credit_card_rewards
+-- Select all records from the Credit_card_rewards table for an overview of rewards data
+SELECT *
+FROM Project1..Credit_card_rewards;
 
+-- Select all records from the Credit_card_transaction_flow table to analyze transaction flow data
 SELECT * 
-From Project1..Credit_card_transaction_flow
+FROM Project1..Credit_card_transaction_flow;
 
+-- Select distinct categories from the Credit_card_transaction_flow table to identify unique transaction categories
 SELECT DISTINCT Category 
-From Project1..Credit_card_transaction_flow
+FROM Project1..Credit_card_transaction_flow;
 
+-- Select the name, transaction amount, and new category field (Category2) for transactions by 'Heather Jones'
+-- This provides a grouped summary of Heather Jones' transactions by category
 SELECT Name, Transaction_Amount, Category2
-From Project1..Credit_card_transaction_flow
+FROM Project1..Credit_card_transaction_flow
 WHERE Name = 'Heather' AND Surname = 'Jones'
-GROUP BY Name, Transaction_Amount, Category2
+GROUP BY Name, Transaction_Amount, Category2;
 
-
-
-
+-- Add a new column 'Category2' to the Credit_card_transaction_flow table to categorize transactions
 ALTER TABLE Project1..Credit_card_transaction_flow
 ADD Category2 VARCHAR(50);
 
+-- Update the new Category2 column based on the original Category values for simplified categorization
 UPDATE Project1..Credit_card_transaction_flow
 SET Category2 = 
     CASE 
@@ -27,16 +31,16 @@ SET Category2 =
         ELSE Category -- Leave unchanged for Travel
     END;
 
-
-
-
+-- Create a new table to store individual transaction summaries by category and month
 CREATE TABLE Project1..Individual_Transactions_By_Category_Month (
     Name VARCHAR(100),
     Surname VARCHAR(100),
     Category VARCHAR(100),
     Transaction_Month INT,
-    Total_Transaction_Amount DECIMAL(18, 2));
+    Total_Transaction_Amount DECIMAL(18, 2)
+);
 
+-- Insert summarized transaction data into the new table, grouped by name, surname, category, and month
 INSERT INTO Project1..Individual_Transactions_By_Category_Month (Name, Surname, Category, Transaction_Month, Total_Transaction_Amount)
 SELECT
     Name,
@@ -52,18 +56,18 @@ GROUP BY
     Category2,
     DATEPART(MONTH, Date);
 
-
+-- Select all records for a specific individual ('Aaron Armstrong') from the summarized transaction table
 SELECT *
 FROM Project1..Individual_Transactions_By_Category_Month
-WHERE NAME= 'Aaron' AND Surname = 'Armstrong'
+WHERE Name = 'Aaron' AND Surname = 'Armstrong';
 
-
+-- Select the full name, total transaction amount, and category from the summarized transaction table
 SELECT
-        CONCAT(Name, ' ',Surname) AS Full_Name, Total_Transaction_Amount, Category
+    CONCAT(Name, ' ', Surname) AS Full_Name, Total_Transaction_Amount, Category
 FROM Project1..Individual_Transactions_By_Category_Month;
 
-
---This query calculates all total rewards from each credit cards earned from all transactions made by each individual.
+-- Calculate total rewards earned from all credit cards by each individual
+-- This includes promotional rewards and cashback rewards based on transaction categories and amounts
 SELECT
     CONCAT(itr.Name, ' ', itr.Surname) AS Full_Name,
     ccr.Credit_Card,
@@ -129,8 +133,8 @@ GROUP BY
 ORDER BY 
     1, 2;
 
-
---This query separates all transactions made by category.
+-- Separate all transactions made by category and calculate rewards
+-- This includes total promotional rewards and cashback rewards by category
 SELECT
     CONCAT(itr.Name, ' ', itr.Surname) AS Full_Name,
     ccr.Credit_Card,
@@ -198,8 +202,7 @@ GROUP BY
 ORDER BY 
     1, 2;
 
-
---This query selects the top two credit cards with the highest total rewards earned earned by each individual 
+-- Select the top two credit cards with the highest total rewards earned by each individual
 WITH RankedRewards AS (
     SELECT
         CONCAT(itr.Name, ' ', itr.Surname) AS Full_Name,
@@ -293,8 +296,7 @@ WHERE
 ORDER BY 
     Full_Name, CardRank;
 
-
---This query separates the top two credit cards with the highes total rewards earned by category
+-- Separate the top two credit cards with the highest total rewards earned by category
 WITH RankedRewards AS (
     SELECT
         CONCAT(itr.Name, ' ', itr.Surname) AS Full_Name,
